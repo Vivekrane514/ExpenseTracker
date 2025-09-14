@@ -18,7 +18,21 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Environment Variables
+
+Before running the application, create a `.env` file in the root directory by copying the `.env.example` file and filling in the required values:
+
+```bash
+cp .env.example .env
+```
+
+Make sure to set the following environment variables:
+
+- **DATABASE_URL**: Your PostgreSQL connection string
+- **DIRECT_URL**: Your direct PostgreSQL connection string
+- **NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY**: Your Clerk publishable key
+- **CLERK_SECRET_KEY**: Your Clerk secret key
+- **NODE_ENV**: Set to "development" for local development
 
 ## Learn More
 
