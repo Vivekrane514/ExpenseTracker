@@ -4,8 +4,10 @@ import React, { Suspense } from 'react';
 import TransactionTable from '../_components/transaction-table';
 import { BarLoader } from 'react-spinners';
 import AccountChart, { AccountsChart } from '../_components/account-chart';
+import { checkUser } from '@/lib/checkUser';
 
 const AccountsPage = async ({ params }) => {
+  await checkUser();
   const accountData = await getAccountWithTransactions(params.id);
 
   if(!accountData) {
