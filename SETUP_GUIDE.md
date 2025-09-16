@@ -31,6 +31,17 @@ NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY="pk_test_your_actual_publishable_key"
 CLERK_SECRET_KEY="sk_test_your_actual_secret_key"
 ```
 
+5. Set up webhooks for user creation:
+   - In Clerk Dashboard, go to Webhooks
+   - Create a new webhook
+   - Set the endpoint URL to: `https://yourdomain.com/api/webhooks/clerk` (replace with your actual domain)
+   - Select the `user.created` event
+   - Copy the webhook secret and add to your `.env` file:
+
+```bash
+CLERK_WEBHOOK_SECRET="whsec_your_webhook_secret"
+```
+
 ### 4. Configure Resend for Email Sending
 1. Go to [Resend Dashboard](https://resend.com)
 2. Create an account and get your API key

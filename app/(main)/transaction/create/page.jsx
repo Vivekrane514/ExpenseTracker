@@ -3,10 +3,8 @@ import React from 'react'
 import AddTransactionForm from '../_components/transaction-form';
 import { defaultCategories } from '@/data/categories';
 import { getTransaction } from '@/actions/transaction';
-import { checkUser } from '@/lib/checkUser';
 
 const AddTransactionPage = async ({ searchParams }) => {
-    await checkUser();
     const accounts = await getUserAccounts();
 
     const editId = searchParams?.edit;

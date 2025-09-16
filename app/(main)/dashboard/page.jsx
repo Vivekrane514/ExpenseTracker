@@ -7,11 +7,9 @@ import CreateAccountDrawer from '@/components/create-account-drawer';
 import { getCurrentBudget } from '@/actions/budget';
 import { BudgetProgress } from './_components/budget-progress';
 import DashboardOverview from './_components/transaction-overview';
-import { checkUser } from '@/lib/checkUser';
 // import BudgetProgress from './_components/budget-progress';
 
 async function DashboardPage() {
-  await checkUser();
   const accounts = await getUserAccounts();
 
     const defaultAccount = accounts?.find((account) => account.isDefault);

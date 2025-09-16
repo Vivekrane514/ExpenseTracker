@@ -5,6 +5,7 @@ import { auth } from "@clerk/nextjs/server";
 import { id } from "date-fns/locale";
 import { revalidatePath } from "next/cache";
 import { date, success } from "zod";
+import { checkUser } from "@/lib/checkUser";
 
 const serializeTracsaction = (obj) => {
     const serialized = { ...obj };
@@ -24,11 +25,9 @@ export async function updateDefaultAccount(accountId) {
     try {
         const { userId } = await auth();
                 if (!userId) throw new Error('Unauthorized');
-        
-                const user = await db.user.findUnique({
-              where: { clerkUserId: userId },
-            });
-        
+
+                const user = await checkUser();
+
             if (!user) {
               throw new Error("User not found");
             }
@@ -56,11 +55,9 @@ export async function updateDefaultAccount(accountId) {
 export async function getAccountWithTransactions(accountId) {
     const { userId } = await auth();
                 if (!userId) throw new Error('Unauthorized');
-        
-                const user = await db.user.findUnique({
-              where: { clerkUserId: userId },
-            });
-        
+
+                const user = await checkUser();
+
             if (!user) {
               throw new Error("User not found");
             }
@@ -90,9 +87,7 @@ export async function bulkDeleteTransactions(transactionIds) {
     const { userId } = await auth();
     if (!userId) throw new Error("Unauthorized");
 
-    const user = await db.user.findUnique({
-      where: { clerkUserId: userId },
-    });
+    const user = await checkUser();
 
     if (!user) throw new Error("User not found");
 
